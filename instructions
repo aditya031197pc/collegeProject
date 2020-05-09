@@ -1,0 +1,33 @@
+1- For Backend:
+- You need to create a virtual environment so that your local python libraries are not changed.
+- Steps to create a virtual env: commands to be run on the terminal in linux:
+	1- sudo pip3 install virtualenv
+	2- sudo pip3 install virtualenvwrapper
+	3- export WORKON_HOME=~/Envs
+	4- mkdir -p $WORKON_HOME
+	5- source /usr/local/bin/virtualenvwrapper.sh
+	6- mkvirtualenv env1
+	7- workon env1
+- Note: We need to put statements 2 and 4 in our ~/.bashrc file
+	Note :- After putting statements in .bashrc you need to use
+	$ source .bashrc
+
+- After this, go inside the folder containing the manage.py file. Make sure you are on the virtual environment.
+-	Now first install all the dependencies:-
+		- pip3 install -r requirements.txt (may take a while in downloading the dependencies)
+
+- Then run the following commands to run the backend server:
+	-python manage.py migrate
+	-python manage.py runserver
+- With this, your database will be created and the server will be up and running
+
+
+2- For frontend:
+- Install node and npm in your device from the official site
+- Navigate to the folder containing the package.json file and run the following commands:
+	- npm install - (may take a while in downloading the node modules)
+	- npm start
+- With this your frontend server will be up and running.
+	- http://127.0.0.1:8080/#!/disease-prediction
+	- use this url to reach to the disease prediction page.
+

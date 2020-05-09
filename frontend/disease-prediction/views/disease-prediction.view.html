@@ -1,0 +1,47 @@
+<md-content flex="50" flex-offset="25" ng-if="!vm.predictedDisease">
+    <md-card>
+        <h4 flex-offset="5" layout-padding="5" flex="90">Kindly tell us which of the following symptoms are you
+            experiencing ?</h4>
+        <form name="diseasePredictionForm" layout="column" flex-offset="5" layout-padding="5" flex="90">
+            <div layout="row" layout-padding="2" layout-margin="2" layout-wrap layout-align="space-between center">
+                <md-input-container ng-repeat="s in vm.symptomsArray track by $index" flex="45" ng-if="vm.notFalse(s)">
+                    <md-switch ng-model="vm.symptomsMap[$index]">{{ s | transform}}</md-switch>
+                </md-input-container>
+            </div>
+            <div>
+                <md-button ng-disabled="!diseasePredictionForm.$valid || vm.submitClicked"
+                    ng-click="vm.predictDisease()">
+                    Predict Disease
+                </md-button>
+                <md-button ng-click="vm.reset()" class="md-warn" ng-disabled="vm.submitClicked">Reset
+                </md-button>
+                <span layout="row" layout-align="space-around">
+                    <md-progress-circular ng-show="vm.submitClicked" md-mode="indeterminate" md-diameter="50">
+                    </md-progress-circular>
+                </span>
+            </div>
+        </form>
+    </md-card>
+</md-content>
+<md-content flex="40" flex-offset="30" ng-if="vm.predictedDisease">
+    <h3 flex-offset="5" layout-padding="5" flex="90">Our Prediction:</h3>
+    <md-card>
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-title" ng-if="vm.isPrediction">You show symptoms of {{vm.predictedDisease}}</span>
+                <span class="md-title" ng-if="!vm.isPrediction">{{vm.predictedDisease}}</span>
+                <span class="md-subhead" ng-if="vm.isPrediction">Probability {{vm.predictedDiseaseProbab}}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <img ng-src="{{vm.predictedDiseaseDetails.imageURL}}" class="md-card-image" alt="{{vm.predictedDisease}}"
+            style="height: 300px; width: 450px; object-fit: contain; align-self: center;">
+        <md-card-content>
+            <p ng-repeat="(k,v) in vm.predictedDiseaseDetails">
+                <span ng-if="k !== 'imageURL'"><b>{{k}}</b> {{'-' + v}}</span>
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-click="vm.reset()">Check Again</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

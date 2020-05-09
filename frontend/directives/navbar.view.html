@@ -1,0 +1,18 @@
+<md-content>
+  <md-nav-bar
+    md-selected-nav-item="vm.currentNavItem"
+    nav-bar-aria-label="navigation links"
+  >
+    <md-nav-item
+      ng-repeat="e in vm.navLinks"
+      md-nav-sref="{{e.link}}"
+      name="{{e.link}}"
+    >
+      <span ng-bind="e.name"></span>
+    </md-nav-item>
+    <span flex></span>
+    <md-nav-item ng-show="vm.showLogout" md-nav-click="vm.logout()"
+      >Logout</md-nav-item
+    >
+  </md-nav-bar>
+</md-content>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="node_modules/restangular/src/restangular.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-all.min.js"></script>
+    <script src="node_modules/ngstorage/ngStorage.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="constants.js"></script>
+    <script src="app.config.js"></script>
+    
+    <script src="services/response.service.js"></script>
+    <script src="services/user.service.js"></script>
+    <script src="services/prediction.service.js"></script>
+    
+    <script src="directives/navbar.directive.js"></script>
+    <script src="directives/compareTo.directive.js"></script>
+    <script src="filters/transform.filter.js"></script>
+
+    <script src="login/controllers/login.controller.js"></script>
+    <script src="signup/controllers/signup.controller.js"></script>
+    <script src="profile/controllers/profile.controller.js"></script>
+    <script src="edit-profile/controllers/edit-profile.controller.js"></script>
+    <script src="disease-prediction/controllers/disease-prediction.controller.js"></script>
+    <script src="display-disease/controllers/display-disease.controller.js"></script>
+    <script src="home/controllers/home.controller.js"></script>
+    <script src="utils/app.utils.js"></script>
+    <title>Disease Prediction</title>
+</head>
+
+<body layout="column">
+    <md-content>
+        <app-navigation></app-navigation>
+        <div ui-view>
+    </md-content>
+</body>
+
+</html>

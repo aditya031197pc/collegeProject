@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.login-signup-content {
+  overflow: hidden;
+  margin: 50px auto;
+  width: 50%;
+}
+
+.submit-button {
+  display: block;
+  margin: 0 auto;
+}
+
+body {
+  overflow-y: hidden !important;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
+.employee-tile :hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 20px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination li.active {
+  background-color: #4CAF50;
+  border-radius: 5px;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination .disabled a {
+  color: gray;
+  cursor: not-allowed;
+}
+
+.search {
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid grey;
+  background: #f1f1f1;
+}
+
+.people-icon {
+  border: brown 3px solid;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.people-name {
+  text-align: center;
+}

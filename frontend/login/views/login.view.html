@@ -1,0 +1,27 @@
+<md-content flex="40" flex-offset="30">
+  <form name="loginForm" style="overflow: hidden;">
+    <md-input-container class="md-block">
+      <label>Email</label>
+      <input ng-model="vm.email" type="email" ng-required="true" />
+    </md-input-container>
+
+    <md-input-container class="md-block">
+      <input ng-model="vm.password" type="{{showPassword ? 'text' : 'password'}}" placeholder="Password"
+        ng-required="true" ng-minlength="8" />
+    </md-input-container>
+    <md-input-container>
+      <md-switch ng-model="showPassword">Show Password</md-switch>
+    </md-input-container>
+    <div>
+      <md-button class="submit-button" ng-disabled="!loginForm.$valid || vm.submitClicked" ng-click="vm.submit()">Submit
+      </md-button>
+      <span layout="row" layout-align="space-around">
+        <md-progress-circular ng-show="vm.submitClicked" md-mode="indeterminate" md-diameter="50">
+        </md-progress-circular>
+      </span>
+    </div>
+    <md-button ng-disabled="vm.submitClicked" class="submit-button" ng-click="vm.goToSignup()">
+      Create Account
+    </md-button>
+  </form>
+</md-content

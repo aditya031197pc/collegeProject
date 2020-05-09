@@ -1,0 +1,24 @@
+<md-content ng-if="vm.user.email">
+  <md-card flex="40" flex-offset="30">
+    <md-card-title>
+      <md-card-title-text>
+        <span ng-bind="vm.user.name" class="md-headline"></span>
+        <span ng-bind="vm.user.email" class="md-subhead"></span>
+      </md-card-title-text>
+    </md-card-title>
+    <div style="height:250px; text-align: center;">
+      <img style="object-fit: contain;height: 80%;" ng-src='{{vm.user.image || "assets/dummy.png"}}'
+        class="md-card-image" alt="User Image" />
+    </div>
+    <md-card-content>
+      <p ng-bind="vm.user.bio"></p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="center center">
+      <md-button ng-click="vm.logout()">Logout</md-button>
+      <md-button ng-click="vm.editProfile()">Edit</md-button>
+    </md-card-actions>
+  </md-card>
+</md-content>
+<md-content ng-if="!vm.user.email">
+  <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</md-content>

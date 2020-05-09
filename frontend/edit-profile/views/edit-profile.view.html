@@ -1,0 +1,85 @@
+<md-content ng-if="vm.user.name">
+  <md-content flex="50" flex-offset="25">
+    <md-card>
+      <form name="editProfileForm" layout="column" flex-offset="5" layout-padding="5" flex="90">
+        <md-input-container>
+          <label>Name</label>
+          <input ng-model="vm.user.name" type="text" ng-required="true" name="name" />
+          <div ng-messages="editProfileForm.name.$error">
+            <div ng-message="required">Name is required.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Email</label>
+          <input ng-model="vm.user.email" type="email" readonly disabled />
+        </md-input-container>
+        <md-input-container>
+          <label>Your current height in meters</label>
+          <input ng-model="vm.user.height" type="number" />
+        </md-input-container>
+        <md-input-container>
+          <label>Your current weight in kgs</label>
+          <input ng-model="vm.user.weight" type="number" />
+        </md-input-container>
+        <md-input-container>
+          <label>Few words that describe you</label>
+          <input ng-model="vm.user.bio" type="text" />
+        </md-input-container>
+        <md-divider></md-divider>
+        <md-button ng-if="!vm.showPasswordForm" ng-click="vm.showPasswordForm = true">Update Password</md-button>
+        <md-content ng-if="vm.showPasswordForm" layout="column">
+          <md-input-container>
+            <input ng-model="vm.password" type="password" placeholder="Password" name="password" ng-required="true"
+              ng-minlength="8" ng-change="vm.checkPasswordStrength(vm.password)" />
+            <div ng-messages="editProfileForm.password.$error">
+              <div ng-message="required">Password is required.</div>
+              <div ng-message="minlength">
+                Password should be atleast 8 characters long.
+              </div>
+              <div ng-bind="vm.passwordStrength"></div>
+            </div>
+          </md-input-container>
+
+          <md-input-container>
+            <input name="confirmPassword" ng-model="vm.confirmPassword" type="password" placeholder="Confirm Password"
+              ng-required="true" compare-to="vm.password" />
+            <div ng-messages="editProfileForm.confirmPassword.$error">
+              <div ng-message="required">Passwords dont Match.</div>
+            </div>
+          </md-input-container>
+        </md-content>
+        <md-button ng-if="vm.showPasswordForm" ng-click="vm.showPasswordForm = false">Dont Update Password
+        </md-button>
+        <md-divider></md-divider>
+        <div style="height:250px; text-align: center;" ng-if="!vm.showImageForm && vm.user.image">
+          <img style="object-fit: contain;height: 80%;" ng-src="{{vm.user.image}}" class="md-card-image"
+            alt="{{vm.user.name}}" />
+        </div>
+        <md-button ng-if="!vm.showImageForm" ng-click="vm.showImageForm = true">Update Image</md-button>
+        <md-input-container ng-if="vm.showImageForm && !vm.removeImage">
+          <label>How do you look?</label>
+          <input placeholder="" type="file" ngf-select ng-model="vm.image" name="file" accept="image/*"
+            ngf-max-size="2MB" />
+        </md-input-container>
+        <md-checkbox ng-if="vm.showImageForm && vm.user.image" ng-model="vm.removeImage" aria-label="remove image">
+          Remove Profile Image
+        </md-checkbox>
+        <md-button ng-if="vm.showImageForm" ng-click="vm.showImageForm = false">Dont Update Image</md-button>
+        <div>
+          <md-button ng-disabled="!editProfileForm.$valid || vm.submitClicked" ng-click="vm.editUser()">Save
+          </md-button>
+          <md-button class="md-warn" ng-disabled="vm.submitClicked" ng-click="vm.cancel()">Cancel
+          </md-button>
+          <span layout="row" layout-align="space-around">
+            <md-progress-circular ng-show="vm.submitClicked" md-mode="indeterminate" md-diameter="50">
+            </md-progress-circular>
+          </span>
+        </div>
+      </form>
+    </md-card>
+  </md-content>
+</md-content>
+<md-content ng-if="!vm.user.name">
+  <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</md-content>

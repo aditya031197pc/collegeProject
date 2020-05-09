@@ -1,0 +1,68 @@
+<md-content flex="40" flex-offset="30">
+  <md-content class="md-block">
+    <form name="signupForm">
+      <md-input-container class="md-icon-float md-block">
+        <label>Name</label>
+        <input ng-model="vm.name" type="text" ng-required="true" name="name" />
+        <div ng-messages="signupForm.name.$error">
+          <div ng-message="required">Name is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-icon-float md-block">
+        <label>Email</label>
+        <input ng-model="vm.email" type="email"  ng-required="true" name="email"/>
+        <div ng-messages="signupForm.email.$error">
+          <div ng-message="required">Valid email is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <input name="password" ng-model="vm.password" type="password" placeholder="Password" ng-required="true"
+          ng-minlength="8" ng-change="vm.checkPasswordStrength(vm.password)" />
+        <div ng-messages="signupForm.password.$error">
+          <div ng-message="required">Password is required.</div>
+          <div ng-message="minlength">
+            Password should be atleast 8 characters long.
+          </div>
+          <div ng-bind="vm.passwordStrength"></div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <input name="confirmPassword" ng-model="vm.confirmPassword" type="password" placeholder="Confirm Password"
+          ng-required="true" compare-to="vm.password" />
+        <div ng-messages="signupForm.confirmPassword.$error">
+          <div ng-message="required">Password is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-icon-float md-block">
+        <label>Few words that describe you</label>
+        <input ng-model="vm.bio" type="text" />
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>How do you look?</label>
+        <input placeholder="" type="file" ngf-select ng-model="vm.image" name="file" accept="image/*"
+          ngf-max-size="2MB" />
+      </md-input-container>
+      <div>
+        <md-button class="submit-button" ng-disabled="!signupForm.$valid || vm.submitClicked"
+          ng-click="vm.submitDetails()">Submit
+        </md-button>
+        <span layout="row" layout-align="space-around">
+          <md-progress-circular ng-show="vm.submitClicked" md-mode="indeterminate" md-diameter="50">
+          </md-progress-circular>
+        </span>
+      </div>
+    <md-button class="submit-button" ng-disabled="vm.submitClicked" ng-click="vm.gotoLogin()">
+      Already have an account</md-button>
+
+    <span layout="row" layout-align="space-around">
+      <md-progress-circular ng-show="vm.submitClicked" md-mode="indeterminate" md-diameter="50">
+      </md-progress-circular>
+    </span>
+    </form>
+  </md-content>
+</md-content>

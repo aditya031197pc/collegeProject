@@ -5,7 +5,7 @@ autopep8==1.5
 backcall==0.1.0
 billiard==3.6.2.0
 bleach==3.1.5
-celery==4.4.0
+celery==5.2.2
 decorator==4.4.2
 defusedxml==0.6.0
 Django==1.11
